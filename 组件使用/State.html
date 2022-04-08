@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+<body>
+
+<div class="content1"></div>
+<div class="content2"></div>
+
+
+<!--引入核心库-->
+<script src="../js/react.development.js"></script>
+<!--引入dom库-->
+<script src="../js/react-dom.development.js"></script>
+<!--引入babel-->
+<script src="../js/babel.min.js"></script>
+
+<!--jsx语法必须经过babel转换才能变为js-->
+<script type="text/babel">
+
+
+    // 使用react想页面插入数据
+    class StateToggle extends React.Component {
+        state = {isHot: false};
+
+        changeState = () => {
+            this.setState({isHot:!this.state.isHot});
+        }
+
+        render() {
+            return (
+                <div>
+                    <div onClick={this.changeState} className="weather">今天天气非常{this.state.isHot ? "热" : "冷"}</div>
+                </div>
+            )
+        }
+    }
+
+
+    ReactDOM.render(<StateToggle/>, document.querySelector(".content1"));
+    ReactDOM.render(<StateToggle/>, document.querySelector(".content2"));
+</script>
+</body>
+</html>

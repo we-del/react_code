@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="content1"></div>
+<div class="content2"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入操作react操作DOM库-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入babel-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<!--引入props属性输入限制-->
+<script src="../js/prop-types.js"></script>
+<!--jsx语法必须经过babel转换才能变为js-->
+<script type="text/babel">
+    // 使用react想页面插入数据
+    class Todo extends React.Component {
+        render() {
+            console.log(this);
+            return (
+                <div>
+                    <h1>
+                        Simple TODO List
+                        <input type="text"/>
+                        <InputAndDisplay ref={node => this.show = node}/>
+                    </h1>
+                    <div style={{width: 30 + "px", height: 30 + "px", backgroundColor: 'red'}}>22</div>
+                </div>
+            )
+        }
+    }
+
+    class InputAndDisplay extends React.Component {
+        constructor() {
+            super();
+            this.state = {contentList: []};
+        }
+
+        getInputContent = () => {
+            let value = this.contentInput.value.trim();
+            let {contentList} = this.state;
+            contentList.push(value);
+            if (value !== "") {
+                this.setState({contentList});
+            }
+
+            this.contentInput.value = "";
+        }
+
+        render() {
+            let {contentList} = this.state;
+            return (
+                <div>
+                    <div className="input-region">
+                        <input type="text" ref={node => this.contentInput = node}/>
+                        <button onClick={this.getInputContent}>添加</button>
+                    </div>
+                    <div className="display">
+                        <ul>
+                            {
+                                contentList.map((item, index) => {
+                                    return <li key={index}>{item}</li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+
+    ReactDOM.render(<Todo/>, document.querySelector(".content1"));
+    // ReactDOM.render(<PropsTest name="李四" age={12}/>, document.querySelector(".content2"));
+</script>
+</body>
+</html>

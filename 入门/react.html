@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content"></div>
+
+
+<!--引入核心库-->
+<script src="../js/react.development.js"></script>
+<!--引入dom库-->
+<script src="../js/react-dom.development.js"></script>
+<!--引入babel-->
+<script src="../js/babel.min.js"></script>
+
+<!--jsx语法必须经过babel转换才能变为js-->
+<script type="text/babel">
+    // let a = 1;
+    // let vDOM = <h1>
+    //     Hello world!
+    //     <p>我来进行包裹</p>
+    // </h1>;
+    // console.log(a);
+
+
+
+    // 使用react想页面插入数据
+    let list = ["react", "vue", "node.js", "ajax"];
+    let vDOM = (
+        <div>
+
+            <ul>
+                内容
+
+                {list.map((item, index) => {
+                   return <li key={index}>{item}</li>;
+                })}
+            </ul>
+        </div>
+    )
+    ReactDOM.render(vDOM, document.querySelector(".content"));
+</script>
+</body>
+</html>

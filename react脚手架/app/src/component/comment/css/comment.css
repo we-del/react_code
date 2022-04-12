@@ -1,0 +1,83 @@
+/* 
+ * 2022/4/9 17:40
+ * author: xxx
+ * @description:
+ */
+.comment-title {
+    height: 200px;
+    line-height: 200px;
+    text-indent: 1em;
+    background-color: #ebedea;
+}
+
+.comment-flex-box {
+    display: flex;
+    flex: 5;
+}
+
+.input-region {
+    flex: 2;
+    padding: 10px;
+}
+
+.comment-region {
+    flex: 3;
+}
+
+.comment-user-content {
+    width: 90%;
+    height: 30px;
+    border-radius: 2px 2px;
+    border: 1px solid #000;
+    margin: 10px 0;
+    outline: none;
+}
+
+.comment-content {
+    width: 90%;
+    height: 150px;
+    border-radius: 2px 2px;
+    border: 1px solid #000;
+    margin-top: 10px;
+    outline: none;
+    resize: none;
+}
+
+#commit {
+    float: right;
+    width: 50px;
+    height: 28px;
+    margin-right: 40px;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #dfe2de;
+}
+
+.comment-region-title {
+    font-size: 20px;
+}
+
+.comment-list > li {
+    height: 100px;
+    border: 1px solid #333;
+    margin-right: -1px;
+    margin-bottom: -1px;
+
+    border-collapse: collapse;
+}
+
+.comment-list > li .remove-this {
+    float: right;
+
+}
+
+.comment-list > li .user {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.comment-list > li .user-content {
+    margin-left: 40px;
+    font-size: 14px;
+}

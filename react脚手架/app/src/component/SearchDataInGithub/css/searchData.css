@@ -1,0 +1,38 @@
+/* 
+ * 2022/4/11 20:12
+ * author: xxx
+ * @description:
+ */
+
+.title-region {
+    height: 20%;
+    background-color: #eceeeb;
+    padding: 5% 0 5% 10%;
+}
+
+.library-list {
+    display: flex;
+    flex: 3;
+    flex-flow: row wrap;
+}
+
+.lib {
+    flex: 1;
+    height: 10%;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin-right: -1px;
+    margin-bottom: -1px;
+}
+
+.lib > a > img {
+    width: 400px;
+    height: 400px;
+}
+
+/*.lib>a .user-name{*/
+/*    font-size: 10px;*/
+/*    text-align: center;*/
+/*}*/
+
+ 

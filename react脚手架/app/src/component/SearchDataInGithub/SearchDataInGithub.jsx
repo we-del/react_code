@@ -6,6 +6,7 @@
 
 import React, {Component} from "react";
 import "./css/searchData.css";
+import PubSub from "pubsub-js";
 
 export default class SearchDataInGithub extends Component {
     constructor(props) {
@@ -17,6 +18,36 @@ export default class SearchDataInGithub extends Component {
             err: false,
             userInputted: false
         };
+    }
+
+    // 代理模式
+    pubsubPublish = ()=>{
+        // 向test 端口发送数据一次数据
+        PubSub.publish("test",this.testPubSub);
+    }
+
+    componentDidMount(){
+        // 把该函数挂载到全局消息队列
+        this.pubsubPublish();
+    }
+
+    /**
+     @description: 此函数用于发送数据到指定接口
+    */
+    sendPubSubMsg = ()=>{
+        this.pubsubPublish();
+    }
+
+    /**
+     @param w 传入的数据
+     @description: 测试pubsub-js
+    */
+    testPubSub = (w)=>{
+        if(this instanceof SearchDataInGithub) {
+            console.log(w+"函数自己调用");
+        }else{
+            console.log(w+"pub");
+        }
     }
 
     /**
@@ -158,6 +189,7 @@ export default class SearchDataInGithub extends Component {
                     {userInputted ? (responded ? this.getData() : <h3>数据加载中</h3>) : <h3>请输入数据</h3>}
 
                 </div>
+                <button onClick={this.sendPubSubMsg}>发送Publish</button>
             </div>
         );
     }
